@@ -1,0 +1,13 @@
+<div class="ticket-container">
+    <h2 [textContent]="title"></h2>
+    <div
+            cdkDropList
+            [cdkDropListData]="data"
+            class="ticket-list"
+            (cdkDropListDropped)="drop.emit($event)">
+
+        <div class="ticket-holder" *ngFor="let ticket of data" cdkDrag>
+            <snx-ticket-holder [ticket]="ticket"></snx-ticket-holder>
+        </div>
+    </div>
+</div>
