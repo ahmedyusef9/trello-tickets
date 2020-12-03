@@ -19,23 +19,24 @@ export class TicketDialogComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private ticket$: TicketService,
               private dialogRef: MatDialogRef<TicketDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: ticketDialogType) {
+              @Inject(MAT_DIALOG_DATA) public data: Ticket) {
   }
 
   ngOnInit(): void {
-    this.operationType = this.data.operationType;
+
+    this.operationType = this.data._id ? 'Update' : 'Add';
+
     this.ticketForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      description:['', Validators.required],
-      members: [''],
-      dueDate: ['']
+      title: [this.data.title ? this.data.title : '', Validators.required],
+      description:[this.data.description ? this.data.description : '', Validators.required],
+      members: [this.data.members ? this.data.members : ''],
+      dueDate: [this.data.dueDate ? this.data.dueDate : '']
     })
   }
 
   submit() {
-   const newTicket = Ticket.create({... this.ticketForm.value});
-   this.ticket$.post(newTicket).subscribe(value => {
-     this.dialogRef.close(value);
-   });
+   const newTicket = Ticket.create({...this.data, ... this.ticketForm.value});
+   this.ticketForm.reset();
+   this.dialogRef.close(newTicket)
   }
 }

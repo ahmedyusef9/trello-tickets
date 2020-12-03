@@ -1,8 +1,8 @@
 
 
-export enum ticketStatus {
+export enum TICKET_STATUS {
     TODO = 'TODO',
     ASSIGNMENT = 'ASSIGNMENT',
-    IN_PROGRESS = 'INN_PROGRESS',
+    IN_PROGRESS = 'IN_PROGRESS',
     DONE = 'DONE'
 }

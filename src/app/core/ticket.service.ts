@@ -19,4 +19,16 @@ export class TicketService {
     get(): Observable<Ticket[]> {
         return this.http.get<Ticket[]>(`${environment.apiUrlBase}/ticket`)
     }
+
+    delete(id: string): Observable<Ticket[]> {
+        return this.http.delete<Ticket[]>(`${environment.apiUrlBase}/ticket/${id}`)
+    }
+    patch(id: string, property = {}): Observable<Ticket[]> {
+        return this.http.patch<Ticket[]>(`${environment.apiUrlBase}/ticket/${id}`, property)
+    }
+    put(id: string, ticket: Ticket): Observable<Ticket[]> {
+        return this.http.patch<Ticket[]>(`${environment.apiUrlBase}/ticket/${id}`, ticket)
+    }
+
+
 }

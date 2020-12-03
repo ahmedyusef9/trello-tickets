@@ -1,4 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CacheService} from "../../core/cache.service";
+import {Ticket} from "../../core/model/ticket";
+import {DialogService} from "../../core/dialog.service";
 
 @Component({
   selector: 'snx-ticket-holder',
@@ -8,10 +11,10 @@ import {Component, Input, OnInit} from '@angular/core';
   ]
 })
 export class TicketHolderComponent implements OnInit {
-  @Input('ticket') ticket;
-  constructor() { }
+  @Input('ticket') ticket: Ticket;
+  constructor(public cache$: CacheService,
+              public dialog$: DialogService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

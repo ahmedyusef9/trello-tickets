@@ -1,8 +1,9 @@
 import { Parser } from '@angular/compiler/src/ml_parser/parser';
-import {ticketStatus} from "../../consts";
+import {TICKET_STATUS} from "../../consts";
 
 
 export class Ticket {
+    _id: string;
     status:string;
     title: string;
     description: string;
@@ -11,11 +12,12 @@ export class Ticket {
 
     static create(ticket: Partial<Ticket> = {}) {
         const newTicket = Object.assign(new Ticket(), {
+            _id: null,
             title: null,
             description: null,
             members: [],
             dueDate: new Date(),
-            status: ticketStatus.TODO,
+            status: TICKET_STATUS.TODO,
             ...ticket
         })
         return newTicket;

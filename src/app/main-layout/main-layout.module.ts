@@ -5,6 +5,9 @@ import { DropListGroupComponent } from './drop-list-group/drop-list-group.compon
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TicketsContainerComponent } from './tickets-container/tickets-container.component';
 import { TicketHolderComponent } from './ticket-holder/ticket-holder.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {SharedModule} from "../shared/shared.module";
 
 const routes: Routes = [
   {path:'', component: DropListGroupComponent}
@@ -15,7 +18,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     CommonModule,
-    DragDropModule
+    SharedModule
   ],
   exports:[RouterModule,  ]
 })
